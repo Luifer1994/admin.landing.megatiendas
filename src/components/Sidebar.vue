@@ -61,12 +61,8 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <div class="avatar avatar-xl">
-            <img
-              class="rounded-circle"
-              src="https://img.icons8.com/color/48/000000/user.png"
-              alt="Megatiendas"
-            />
+          <div class="avatar avatar-2xl">
+            <div class="avatar-name rounded-circle"><span>ADM</span></div>
           </div>
         </a>
         <div

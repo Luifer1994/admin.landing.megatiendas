@@ -90,13 +90,17 @@
               <td class="align-middle">{{ client.city }}</td>
               <td class="align-middle">{{ client.coupon.length }}</td>
               <td class="align-middle">
-                <button class="btn btn-falcon-warning btn-sm" type="button">
+                <router-link
+                  :to="{ name: 'Detail', params: { id: client.id } }"
+                  class="btn btn-falcon-warning btn-sm"
+                  type="button"
+                >
                   <span
                     style="font-size: 20px"
                     class="far fa-eye"
                     data-fa-transform="shrink-3 down-2"
                   ></span>
-                </button>
+                </router-link>
               </td>
             </tr>
           </tbody>

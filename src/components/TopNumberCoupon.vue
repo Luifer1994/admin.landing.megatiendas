@@ -62,7 +62,6 @@ export default {
             },
           },
         },
-        colors: ["#1CC5DC"],
 
         xaxis: {
           categories: this.categorie,

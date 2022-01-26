@@ -4,7 +4,7 @@
       type="area"
       :options="categories()"
       :series="series()"
-      height="300"
+      height="370"
     ></apexchart>
   </div>
   <input type="hidden" :value="data" />

@@ -6,7 +6,7 @@
       width="480"
       :options="options()"
       :series="series"
-      height="300"
+      height="370"
     ></apexchart>
   </div>
 </template>
@@ -42,11 +42,11 @@ export default {
     options() {
       return {
         chart: {
-          width: 380,
+          width: 450,
           type: "pie",
         },
         legend: {
-          position: "left",
+          position: "top",
         },
         labels: this.option,
         colors: [

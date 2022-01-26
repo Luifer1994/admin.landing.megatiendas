@@ -1,10 +1,10 @@
 <template>
-  <div id="container">
+  <div id="chart">
     <apexchart
       class="container"
       type="pie"
-      width="380"
-      :options="chartOptions"
+      width="480"
+      :options="options()"
       :series="series"
       height="300"
     ></apexchart>
@@ -12,32 +12,64 @@
 </template>
 <script>
 import VueApexCharts from "vue3-apexcharts";
+import axios from "axios";
 export default {
   name: "CharOrders",
   components: {
     apexchart: VueApexCharts,
   },
+  mounted() {
+    this.getData();
+  },
   data() {
     return {
-      series: [44, 55, 13, 43, 22],
-      chartOptions: {
+      urlApi: process.env.VUE_APP_URL_API,
+      token: localStorage.getItem("token"),
+
+      series: [],
+      option: [],
+    };
+  },
+  methods: {
+    async getData() {
+      const res = await axios.get(this.urlApi + "cunt-coupon-for-city");
+      const arr = res.data;
+      arr.forEach((element) => {
+        this.series.push(element.count);
+        this.option.push(element.city);
+      });
+    },
+    options() {
+      return {
         chart: {
           width: 380,
           type: "pie",
         },
-        labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+        legend: {
+          position: "left",
+        },
+        labels: this.option,
+        colors: [
+          "#F24D98",
+          "#2021A0",
+          "#C2151B",
+          "#59D044",
+          "#F3A002",
+          "#F2F44D",
+          "#1CC5DC",
+        ],
         responsive: [
           {
             breakpoint: 480,
             options: {
               chart: {
-                width: 350,
+                width: 320,
               },
             },
           },
         ],
-      },
-    };
+      };
+    },
   },
 };
 </script>

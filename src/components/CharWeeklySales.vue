@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="chart">
     <apexchart
       type="area"
       :options="categories()"
@@ -49,6 +49,14 @@ export default {
         xaxis: {
           categories: this.data,
         },
+        colors: [
+          "#2021A0",
+          "#C2151B",
+          "#59D044",
+          "#F3A002",
+          "#F2F44D",
+          "#1CC5DC",
+        ],
         fill: {
           opacity: [0.85, 0.25, 1],
           gradient: {

@@ -1,11 +1,14 @@
 <template>
-  <apexchart
-    width="350"
-    type="area"
-    :options="chartOptions"
-    :series="series"
-     height="230"
-  ></apexchart>
+  <div id="container">
+    <apexchart
+      class="container"
+      type="pie"
+      width="380"
+      :options="chartOptions"
+      :series="series"
+      height="300"
+    ></apexchart>
+  </div>
 </template>
 <script>
 import VueApexCharts from "vue3-apexcharts";
@@ -16,21 +19,36 @@ export default {
   },
   data() {
     return {
+      series: [44, 55, 13, 43, 22],
       chartOptions: {
         chart: {
-          id: "vuechart-example",
+          width: 380,
+          type: "pie",
         },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
+        labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 350,
+              },
+            },
+          },
+        ],
       },
-      series: [
-        {
-          name: "series-1",
-          data: [30, 40, 35, 50, 49, 60, 70, 91],
-        },
-      ],
     };
   },
 };
 </script>
+<style>
+#container {
+  width: 100%;
+  display: inline-block;
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    margin-left: 200px;
+  }
+}
+</style>

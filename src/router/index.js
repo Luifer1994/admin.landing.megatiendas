@@ -33,7 +33,7 @@ const router = createRouter({
   routes,
 });
 
-async function validateSesion() {
+/* async function validateSesion() {
   let valid = false;
   const urlApi = process.env.VUE_APP_URL_API;
   const token = localStorage.getItem("token");
@@ -52,7 +52,7 @@ async function validateSesion() {
     }
   }
   return valid;
-}
+} */
 
 function existToken() {
   if (localStorage.getItem("token")) {
@@ -62,7 +62,7 @@ function existToken() {
 
 router.beforeEach((to, from, next) => {
   var isLogin = existToken();
-  if (validateSesion() && isLogin) {
+  if (isLogin) {
     next();
   } else {
     if (

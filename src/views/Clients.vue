@@ -15,7 +15,11 @@
     <div class="card-body p-0 pb-3">
       <div class="d-flex align-items-center justify-content-end my-2 mx-3">
         <div class="mx-2">
-          <button class="btn btn-falcon-success btn-sm" type="button">
+          <button
+            class="btn btn-falcon-success btn-sm"
+            type="button"
+            @click="exportData()"
+          >
             <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span
             ><span class="ms-1">Exportar</span>
           </button>
@@ -128,6 +132,7 @@
 </template>
 <script>
 import axios from "axios";
+import ExportJsonExcel from "js-export-excel";
 export default {
   name: "Clients",
   data() {
@@ -139,12 +144,45 @@ export default {
       page: 1,
       limit: 10,
       search: "",
+      option: {},
     };
   },
   mounted() {
     this.list();
   },
   methods: {
+    async exportData() {
+      const res = await axios.get(this.urlApi + "coupon-export", {
+        headers: { Authorization: `Bearer ${this.token}` },
+      });
+
+      this.option.fileName = "Cupones";
+      let sheetData = [];
+      res.data.forEach((element) => {
+        sheetData.push(element);
+      });
+      this.option.datas = [
+        {
+          sheetData,
+          sheetName: "CUPONES",
+          sheetHeader: [
+            "NÚMERO",
+            "SERIE",
+            "FECHA DE REGISTRO",
+            "DOCUMENTO",
+            "NOMBRES",
+            "APELLIDOS",
+            "CELULAR",
+            "EMAIL",
+            "CIUDAD",
+          ],
+          columnWidths: [5, 3, 8, 7, 10, 10, 8, 12, 10],
+        },
+      ];
+      var toExcel = new ExportJsonExcel(this.option);
+      toExcel.saveExcel();
+    },
+
     async list(limit = null, page = null) {
       if (limit) {
         this.limit = limit;

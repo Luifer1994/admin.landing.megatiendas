@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import axios from "axios";
 
 const routes = [
   {
@@ -32,8 +33,6 @@ const router = createRouter({
   routes,
 });
 
-<<<<<<< HEAD
-=======
 async function validateSesion() {
   let valid = false;
   const urlApi = process.env.VUE_APP_URL_API;
@@ -55,7 +54,6 @@ async function validateSesion() {
   return valid;
 }
 
->>>>>>> parent of 8e41fac... rename coponents
 function existToken() {
   if (localStorage.getItem("token")) {
     return true;
@@ -64,14 +62,10 @@ function existToken() {
 
 router.beforeEach((to, from, next) => {
   var isLogin = existToken();
-  if (validateSesion() && isLogin) {
+  if (isLogin && validateSesion()) {
     next();
   } else {
-    if (
-      to.name === "Login" /* ||
-      to.name === "Forgot" ||
-      to.name === "ResetPassword" */
-    ) {
+    if (to.name === "Login") {
       next();
     } else {
       next("login");

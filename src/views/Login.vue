@@ -89,8 +89,6 @@ export default {
         dataUser.email = this.userEmail;
         dataUser.password = this.userPassword;
         let res = await axios.post(this.urlApi + "login", dataUser);
-        console.log(res);
-        console.log(this.$store);
         this.$store.commit("userLogin", res.data.user);
         localStorage.token = res.data.token;
 

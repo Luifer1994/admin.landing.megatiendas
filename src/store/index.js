@@ -28,13 +28,13 @@ export default createStore({
           headers: { Authorization: `Bearer ${token}` },
         });
         if (response.data.res && localStorage.getItem("token")) {
-          localStorage.removeItem("token");
           commit("RESET_USER");
         }
       } catch (ex) {
         // Handle error
         console.log(ex);
       }
+      localStorage.removeItem("token");
     },
   },
   plugins: [new VuexPersistence().plugin],

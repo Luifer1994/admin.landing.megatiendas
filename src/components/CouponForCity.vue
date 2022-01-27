@@ -14,7 +14,7 @@
 import VueApexCharts from "vue3-apexcharts";
 import axios from "axios";
 export default {
-  name: "CharOrders",
+  name: "CouponForCity",
   components: {
     apexchart: VueApexCharts,
   },

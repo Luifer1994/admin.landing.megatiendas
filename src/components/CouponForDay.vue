@@ -13,7 +13,7 @@
 import VueApexCharts from "vue3-apexcharts";
 import axios from "axios";
 export default {
-  name: "CharWeeklySales",
+  name: "CouponForDay",
   components: {
     apexchart: VueApexCharts,
   },

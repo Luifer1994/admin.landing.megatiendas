@@ -9,7 +9,7 @@
             </div>
           </div>
         </div>
-        <CharWeeklySales></CharWeeklySales>
+        <CouponForDay></CouponForDay>
       </div>
     </div>
     <div class="col-md-6 col-xxl-6">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <CharOrders></CharOrders>
+        <CouponForCity></CouponForCity>
       </div>
     </div>
   </div>
@@ -56,15 +56,14 @@
 </template>
 
 <script>
-import CharOrders from "../components/CharOrders.vue";
-import CharWeeklySales from "../components/CharWeeklySales.vue";
-/* import CharTotalSales from "../components/CharTotalSales.vue"; */
+import CouponForCity from "../components/CouponForCity.vue";
+import CouponForDay from "../components/CouponForDay.vue";
 import TopNumberCoupon from "../components/TopNumberCoupon.vue";
 export default {
   name: "Home",
   components: {
-    CharOrders,
-    CharWeeklySales,
+    CouponForCity,
+    CouponForDay,
     TopNumberCoupon,
   },
 };

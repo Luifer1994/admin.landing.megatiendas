@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import axios from "axios";
 
 const routes = [
   {
@@ -32,6 +33,27 @@ const router = createRouter({
   routes,
 });
 
+async function validateSesion() {
+  let valid = false;
+  const urlApi = process.env.VUE_APP_URL_API;
+  const token = localStorage.getItem("token");
+  try {
+    const res = await axios.get(urlApi + "validate-sesion", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (res.data) {
+      valid = true;
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("vuex");
+      valid = false;
+    }
+  }
+  return valid;
+}
+
 function existToken() {
   if (localStorage.getItem("token")) {
     return true;
@@ -40,7 +62,7 @@ function existToken() {
 
 router.beforeEach((to, from, next) => {
   var isLogin = existToken();
-  if (isLogin) {
+  if (validateSesion() && isLogin) {
     next();
   } else {
     if (

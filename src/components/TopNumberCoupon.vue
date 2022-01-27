@@ -35,7 +35,6 @@ export default {
         this.serie.push(element.coupon_count);
         this.categorie.push(element.name);
       });
-      console.log(this.serie);
     },
 
     getSerie() {

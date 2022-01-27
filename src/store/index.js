@@ -10,11 +10,12 @@ export default createStore({
   },
   mutations: {
     userLogin(state, user) {
+      console.log(user);
       state.user = user;
+      console.log(state.user);
     },
     RESET_USER(state) {
       state.user = null;
-      localStorage.removeItem("token");
     },
   },
   actions: {
@@ -27,14 +28,14 @@ export default createStore({
           headers: { Authorization: `Bearer ${token}` },
         });
         if (response.data.res && localStorage.getItem("token")) {
+          localStorage.removeItem("token");
           commit("RESET_USER");
         }
+        localStorage.removeItem("token");
       } catch (ex) {
         // Handle error
-        localStorage.removeItem("token");
         console.log(ex);
       }
-      localStorage.removeItem("token");
     },
   },
   plugins: [new VuexPersistence().plugin],

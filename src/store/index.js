@@ -10,9 +10,7 @@ export default createStore({
   },
   mutations: {
     userLogin(state, user) {
-      console.log(user);
       state.user = user;
-      console.log(state.user);
     },
     RESET_USER(state) {
       state.user = null;

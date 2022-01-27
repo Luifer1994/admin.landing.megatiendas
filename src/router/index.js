@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import axios from "axios";
+/* import axios from "axios"; */
 
 const routes = [
   {

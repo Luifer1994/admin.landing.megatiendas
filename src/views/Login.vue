@@ -96,10 +96,27 @@ export default {
 
         this.$router.push("/");
       } catch (error) {
-        if (this.userEmail == "" || this.userPassword == "") {
-          console.log("Email y password son requeridos");
-        } else {
-          console.log("Email o Contraseña incorrecta");
+        const err = error.response.data;
+        if (err.email) {
+          this.$notify({
+            title: "Error",
+            text: "El email es requerido!",
+            type: "error",
+          });
+        }
+        if (err.password) {
+          this.$notify({
+            title: "Error",
+            text: "La contraseña es requerida!",
+            type: "error",
+          });
+        }
+        if (err.message) {
+          this.$notify({
+            title: "Error",
+            text: err.message,
+            type: "error",
+          });
         }
       }
     },

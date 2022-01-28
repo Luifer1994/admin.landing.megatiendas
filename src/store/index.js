@@ -27,12 +27,15 @@ export default createStore({
         });
         if (response.data.res && localStorage.getItem("token")) {
           commit("RESET_USER");
+          console.log(response.data.res);
+          localStorage.removeItem("token");
+          window.location.reload();
         }
       } catch (ex) {
         // Handle error
         console.log(ex);
+        localStorage.removeItem("token");
       }
-      localStorage.removeItem("token");
     },
   },
   plugins: [new VuexPersistence().plugin],

@@ -70,7 +70,7 @@
           aria-labelledby="navbarDropdownUser"
         >
           <div class="bg-white dark__bg-1000 rounded-2 py-2">
-            <a @click="logout" href="" class="dropdown-item">Cerrar sesión</a>
+            <a @click="logout" href="#" class="dropdown-item">Cerrar sesión</a>
           </div>
         </div>
       </li>
@@ -83,7 +83,6 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout");
-      this.$router.push("/login");
     },
   },
 };

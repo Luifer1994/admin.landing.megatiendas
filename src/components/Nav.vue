@@ -46,7 +46,7 @@
               <li class="nav-item">
                 <router-link to="/" class="nav-link" aria-expanded="false">
                   <div class="d-flex align-items-center">
-                    <span class="nav-link-text ps-1">Home</span>
+                    <span class="nav-link-text ps-1">Inicio</span>
                   </div>
                 </router-link>
                 <!-- more inner pages-->
@@ -60,6 +60,20 @@
                 >
                   <div class="d-flex align-items-center">
                     <span class="nav-link-text ps-1">Clientes</span>
+                  </div>
+                </router-link>
+                <!-- more inner pages-->
+              </li>
+              <li class="nav-item">
+                <router-link
+                  to="/terms-and-conditions"
+                  class="nav-link"
+                  aria-expanded="false"
+                >
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-text ps-1"
+                      >Términos y condiciones</span
+                    >
                   </div>
                 </router-link>
                 <!-- more inner pages-->

@@ -14,6 +14,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Clients.vue"),
   },
   {
+    path: "/terms-and-conditions",
+    name: "TermsAndConditions",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/TermsAndConditions.vue"),
+  },
+  {
     path: "/detail/:id",
     name: "Detail",
     component: () =>
